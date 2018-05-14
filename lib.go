@@ -80,12 +80,18 @@ func (lfr *LazyFileReaderBuffer) Read(p []byte) (int, error) {
 
 	if len(p) <= lfr.CurrentEndIndex-lfr.CurrentStartIndex {
 		newEnd := lfr.CurrentStartIndex + len(p)
-		copy(p[last_p_index:], lfr.Buffer[lfr.CurrentStartIndex:newEnd])
+		copy(
+			p[last_p_index:],
+			lfr.Buffer[lfr.CurrentStartIndex:newEnd],
+		)
 		lfr.CurrentStartIndex = newEnd
 		return len(p), nil
 	} else {
 		// we know p is larger than our buffer, copy all of what we have.
-		copy(p[last_p_index:], lfr.Buffer[lfr.CurrentStartIndex:lfr.CurrentEndIndex])
+		copy(
+			p[last_p_index:],
+			lfr.Buffer[lfr.CurrentStartIndex:lfr.CurrentEndIndex],
+		)
 		last_p_index += lfr.CurrentEndIndex - lfr.CurrentStartIndex
 		// We've now used up our internal buffer, so lets zero it out
 		// and our internal representation.
