@@ -49,6 +49,7 @@ type LazyFileReaderBuffer struct {
 	CurrentEndIndex   int
 }
 
+// Create a new file reader with a pre-allocated buffer.
 func NewLazyFileReaderBuffer(filename string, buffer_size int) *LazyFileReaderBuffer {
 	return &LazyFileReaderBuffer{
 		Filename:          filename,

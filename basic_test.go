@@ -7,8 +7,8 @@ import (
 	"testing"
 )
 
-const LARGE_BUFFER_SIZE = 50000
-const SMALL_BUFFER_SIZE = 5
+const LARGE_BUFFER_SIZE = 1024 * 50 // 50k
+const SMALL_BUFFER_SIZE = 5         // 5 bytes
 
 func ReadSum(f io.Reader) int64 {
 	reader := json.NewDecoder(f)
